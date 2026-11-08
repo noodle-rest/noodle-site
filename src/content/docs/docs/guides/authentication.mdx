@@ -204,8 +204,10 @@ Noodle instead.
 ## Inheritance
 
 Auth can be defined on a folder or a request. A request with `type: inherit`
-uses the nearest parent folder's auth configuration. Request auth overrides
-folder auth; use `type: none` to opt out for one request.
+uses the nearest ancestor folder with non-`none` auth. A folder with omitted
+auth or `type: none` does not stop the search. Folders do not accept
+`type: inherit`. Explicit request auth overrides folder auth; omitted request
+auth or request `type: none` opts out for that request.
 
 See [Folders and inheritance](/docs/guides/using-folders/) for the interactive workflow
 and [Collection YAML](/docs/reference/collection-format/#auth) for the

@@ -329,7 +329,10 @@ are unavailable. VM execution is limited to 500 ms across resumptions, with a
 Treat every scripted collection as code you trust. `noodle.env.get` can read a secret
 from the selected environment, and a script can place that value in the URL,
 headers, or body sent immediately afterward. Review unfamiliar scripts before
-running the collection.
+running the collection. Network access includes local/private services; there
+is no per-destination permission prompt. Rollback cannot undo HTTP side effects
+or received cookies. See the [security policy](https://github.com/wilfredinni/noodle/blob/main/SECURITY.md)
+for persistence, redaction, history, and report limits.
 
 For CI, fail-fast, structured output, captures, and assertions around scripted
 requests, continue with [Automation](/docs/guides/automation/).

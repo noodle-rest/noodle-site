@@ -65,9 +65,11 @@ reveals empty script and test tabs, while populated tabs remain visible:
 Headers and auth set on a folder apply to all requests inside it: no
 need to repeat config on every request.
 
-Set `auth: { type: inherit }` on a request to use the nearest parent
-folder's auth. Set `auth: { type: none }` to disable auth for a
-specific request.
+Set `auth: { type: inherit }` on a request to use the nearest ancestor
+folder with non-`none` auth. Omitted folder auth and folder `type: none` are
+skipped; they do not block an outer ancestor's auth. Folders do not accept
+`type: inherit`. Omitted request auth or request `type: none` disables auth
+for that request.
 
 Folder scripts and tests run once for each applicable request. Save changes
 with **Ctrl+S**. See [Scripting](/docs/guides/pre-request-scripting/#author-scripts-in-the-tui)
@@ -81,11 +83,15 @@ Stats are computed from the request timeline:
 |--------|-------------|
 | Method | HTTP method |
 | Name | Request name |
-| OK% | Success rate: green ≥90%, yellow ≥50%, red below |
-| Avg | Average response time |
+| OK% | HTTP success rate (2xx/3xx): green ≥90%, yellow ≥50%, red below |
+| Avg | Average response time of those 2xx/3xx attempts |
 | Last | Number of calls + time since last send |
 
-Only requests with timeline entries show data.
+Only direct child requests with timeline entries show data. Cancelled attempts
+remain in the call count and last-send time but are excluded from OK% and Avg.
+Transport failures count against OK%; script, capture, assertion, and test
+outcomes do not change this HTTP metric. Use Results or the Runner for the
+overall execution outcome.
 
 ## Creating and Deleting
 
