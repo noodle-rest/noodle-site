@@ -158,7 +158,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/wilfredinni/noodle",
+          href: "https://github.com/noodle-rest/noodle",
         },
       ],
       sidebar: [

@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://noodlerest.dev/">Website</a> ·
-  <a href="https://github.com/wilfredinni/noodle/releases">Releases</a> ·
+  <a href="https://github.com/noodle-rest/noodle/releases">Releases</a> ·
   <a href="https://app.notion.com/p/39128d9edba9809da834f351332baf57?v=39228d9edba98042ad07000cdbe5d751">Roadmap</a> ·
   <a href="https://noodlerest.dev/docs/getting-started/quick-start/">Quick Start</a> ·
   <a href="https://noodlerest.dev/docs/">Docs</a>

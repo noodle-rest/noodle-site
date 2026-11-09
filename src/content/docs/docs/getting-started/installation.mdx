@@ -60,12 +60,12 @@ may trigger Windows trust prompts. Ordinary-account interactive terminal testing
 remains pending. Manually dispatched CI runs provide a Windows beta ZIP with the
 executable, checksums, and build information for prerelease testing.
 
-Windows x64 remains beta. [Issue #279](https://github.com/wilfredinni/noodle/issues/279)
+Windows x64 remains beta. [Issue #279](https://github.com/noodle-rest/noodle/issues/279)
 reports Defender detecting `Trojan:Win32/Ulthar.A!ml` in v0.10.1; it remains
 unresolved and is not a confirmed false positive. As of November 8, 2026,
 v0.10.4 has passing Windows CI and release-artifact checks, but those checks
 do not establish current Defender acceptance or ordinary-user terminal behavior.
-See the [Windows evidence and remaining limits](https://github.com/wilfredinni/noodle/blob/main/SECURITY.md#windows-support).
+See the [Windows evidence and remaining limits](https://github.com/noodle-rest/noodle/blob/main/SECURITY.md#windows-support).
 
 ## Homebrew
 
@@ -122,7 +122,7 @@ or [run a collection and upload its report](/docs/guides/automation/#run-in-gith
 Requires [Bun](https://bun.sh).
 
 ```bash
-git clone https://github.com/wilfredinni/noodle
+git clone https://github.com/noodle-rest/noodle
 cd noodle
 bun install
 bun run build:bin
@@ -207,7 +207,7 @@ upgrade, run `noodle agent install` explicitly. For other clients, use the
 skills CLI fallback:
 
 ```bash
-npx skills add wilfredinni/noodle --skill noodle-use -g
+npx skills add noodle-rest/noodle --skill noodle-use -g
 ```
 
 After installing, ask your agent to scaffold a collection, audit your

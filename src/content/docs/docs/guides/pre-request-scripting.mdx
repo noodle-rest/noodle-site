@@ -138,7 +138,7 @@ File reads are shared within one run, including dataset rows and saved children;
 the next manual send reads current contents. Files use the same sandbox as
 inline code, with no `import`, `require`, module loading, or filesystem access.
 You can mix file references and inline blocks. See the
-[external-script sample collection](https://github.com/wilfredinni/noodle/tree/main/dev/collection/external-scripts)
+[external-script sample collection](https://github.com/noodle-rest/noodle/tree/main/dev/collection/external-scripts)
 for preparation, response processing, inherited hooks, tests, and chaining.
 Run `bun run dev` from the Noodle repository to start its local services and
 open the development collection.
@@ -331,7 +331,7 @@ from the selected environment, and a script can place that value in the URL,
 headers, or body sent immediately afterward. Review unfamiliar scripts before
 running the collection. Network access includes local/private services; there
 is no per-destination permission prompt. Rollback cannot undo HTTP side effects
-or received cookies. See the [security policy](https://github.com/wilfredinni/noodle/blob/main/SECURITY.md)
+or received cookies. See the [security policy](https://github.com/noodle-rest/noodle/blob/main/SECURITY.md)
 for persistence, redaction, history, and report limits.
 
 For CI, fail-fast, structured output, captures, and assertions around scripted
