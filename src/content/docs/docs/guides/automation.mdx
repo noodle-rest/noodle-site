@@ -405,7 +405,7 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: wilfredinni/setup-noodle@v1
+      - uses: noodle-rest/setup-noodle@v1
         with:
           version: v0.10.4
 
@@ -427,7 +427,7 @@ jobs:
           path: results.xml
 ```
 
-The [setup action](https://github.com/wilfredinni/setup-noodle) verifies the
+The [setup action](https://github.com/noodle-rest/setup-noodle) verifies the
 binary for the CLI version in `with.version`. The run step supplies the
 declared `API_TOKEN` from GitHub Secrets. This bearer health check uses neither
 an interactive keyring nor a cookie jar.

@@ -24,7 +24,7 @@ run the collection, and make the XML report available to download:
 
 ```yaml
 - uses: actions/checkout@v6
-- uses: wilfredinni/setup-noodle@v1
+- uses: noodle-rest/setup-noodle@v1
   with:
     version: v0.10.4
 - run: noodle collection run ./api --reporter junit --output results.xml
@@ -65,6 +65,6 @@ Noodle also masks known secrets when they appear as JSON-escaped strings.
 JSON reports can still include other server response data. JUnit keeps the
 request outcomes and diagnostics and omits response bodies.
 
-See the [setup action](https://github.com/wilfredinni/setup-noodle),
+See the [setup action](https://github.com/noodle-rest/setup-noodle),
 [report formats](/docs/guides/automation/#save-a-collection-report), and
 [full changelog](https://github.com/wilfredinni/noodle/blob/v0.10.4/CHANGELOG.md).

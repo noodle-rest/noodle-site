@@ -105,7 +105,7 @@ available to provide the migration mapping.
 Install an exact CLI release for the next steps in your job:
 
 ```yaml
-- uses: wilfredinni/setup-noodle@v1
+- uses: noodle-rest/setup-noodle@v1
   with:
     version: v0.10.4
 - run: noodle --version
@@ -114,7 +114,7 @@ Install an exact CLI release for the next steps in your job:
 `@v1` selects the installer. Its required `version` input takes a stable Noodle
 release tag. The action downloads the runner's binary, checks it against the
 release's `SHA256SUMS`, and adds it to PATH. It supports macOS and Linux (glibc)
-on x64 and arm64, and Windows on x64. See the [action repository](https://github.com/wilfredinni/setup-noodle)
+on x64 and arm64, and Windows on x64. See the [action repository](https://github.com/noodle-rest/setup-noodle)
 or [run a collection and upload its report](/docs/guides/automation/#run-in-github-actions-ci).
 
 ## From source
