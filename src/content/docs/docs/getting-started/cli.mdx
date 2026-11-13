@@ -192,7 +192,7 @@ collection directories.
 | `noodle collection list <path>` | `--json` | Print the collection tree |
 | `noodle collection inspect <path>` | `--json` | Inspect metadata, environments, and requests |
 | `noodle collection format <path>` | `--json` | Canonicalize request YAML and pretty-print valid JSON bodies |
-| `noodle collection audit <path>` | `--fix`, `--json` | Validate files; optionally rewrite supported fixable content |
+| `noodle collection audit <path>` | `--fix`, `--json` | Validate files and compile script/test syntax without executing it; `--fix` canonicalizes valid files |
 
 `create` requires a new destination. `init` requires an existing directory that
 is not already a collection. `format` modifies request files; invalid JSON body

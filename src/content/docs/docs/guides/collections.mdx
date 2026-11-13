@@ -28,7 +28,9 @@ my-collection/
 The `.noodle/` and `.timeline/` directories are created automatically.
 `.noodle/` stores local UI state. `.timeline/` stores response history that may
 contain public variables or sensitive server payloads, so keep it out of version
-control. The [Timeline](/docs/reference/timeline/) reference explains the stored
+control. Creating or initializing a collection adds `/.noodle/` and `/.timeline/`
+to its `.gitignore`. Existing collections can add these two rules manually.
+The [Timeline](/docs/reference/timeline/) reference explains the stored
 history format and redaction boundaries.
 
 For the complete request, folder, and settings schema, see the

@@ -83,15 +83,15 @@ Stats are computed from the request timeline:
 |--------|-------------|
 | Method | HTTP method |
 | Name | Request name |
-| OK% | HTTP success rate (2xx/3xx): green ≥90%, yellow ≥50%, red below |
-| Avg | Average response time of those 2xx/3xx attempts |
+| OK% | Percentage of completed sends that passed, green ≥90%, yellow ≥50%, red below |
+| Avg | Average response time for HTTP 2xx/3xx attempts |
 | Last | Number of calls + time since last send |
 
 Only direct child requests with timeline entries show data. Cancelled attempts
 remain in the call count and last-send time but are excluded from OK% and Avg.
-Transport failures count against OK%; script, capture, assertion, and test
-outcomes do not change this HTTP metric. Use Results or the Runner for the
-overall execution outcome.
+HTTP, transport, script, capture, assertion, and test failures count against OK%.
+Older timeline entries use the HTTP status and the diagnostics recorded for that send.
+Open Results to inspect a failure.
 
 ## Creating and Deleting
 
