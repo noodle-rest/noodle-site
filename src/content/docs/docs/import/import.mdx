@@ -40,7 +40,7 @@ noodle import ./collection.json --format postman --output ./collections
 The command prints the created directory under `./collections`. Open that exact
 directory with `noodle <printed-path>`, then follow the checks below.
 
-## OpenAPI 3.0
+## OpenAPI 3.0 and 3.1
 
 ```bash
 noodle import ./openapi.json --format openapi
@@ -55,6 +55,33 @@ The grant defaults to authorization code unless `x-noodle-oauth2-grant-type`
 specifies another supported grant; `x-noodle-oauth2-discovery-url-kind` preserves
 Noodle issuer semantics during a round-trip. OpenAPI 3.0 does not represent
 OAuth 1.0a.
+
+### Import a FastAPI document
+
+Save the API's `/openapi.json` locally. Noodle detects OpenAPI 3.1 in JSON or
+YAML. For an API titled Inventory, run:
+
+```bash
+noodle import ./openapi.json --output ./collections --json
+noodle environment set base_url http://127.0.0.1:8000 --env default --collection ./collections/inventory
+noodle collection list ./collections/inventory
+```
+
+When the document omits `servers`, the imported requests use `$base_url` and
+the default environment starts with that variable empty. For JSON bodies,
+Noodle takes the media type's `example`, then the first available
+`examples.*.value`, then the schema's first `examples` entry or `example`.
+Otherwise it builds an editable body from the schema, including nested objects,
+arrays, and nullable fields.
+
+Noodle resolves references within the document. For external files and URLs,
+ambiguous body schemas, or unsupported authentication, read the operation and
+field in the import warnings before sending. In the CLI these are available in
+`data.warnings` with `--json`. The TUI displays them after import. Noodle
+chooses the first security alternative it can represent completely. Cookie API
+keys and mutual TLS need manual configuration. Webhooks and callbacks describe
+incoming traffic and are omitted. A document needs at least one supported
+operation under `paths`. OpenAPI export writes version 3.0.3.
 
 ## Swagger 2.0
 
