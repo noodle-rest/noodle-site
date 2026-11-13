@@ -136,6 +136,24 @@ renamed or deleted, Noodle warns and keeps the result available. Press **F5** to
 return to the retained result selection. Source navigation is available after
 cleanup, while completed results remain inspectable during active runs.
 
+## Preview the CLI selection
+
+Add `--dry-run` to see the environment and the order of requests for one iteration.
+For example, preview the smoke-tagged requests under `users/` against a CSV file:
+
+```bash
+noodle collection run ./my-api users/ --tag smoke --data ./data/users.csv --dry-run
+```
+
+With one setup request, two selected requests and one teardown request, each row
+plans four executions. Three rows give twelve planned executions. Failures can
+shorten the real run, and scripts may send additional requests. The preview checks
+the selection and dataset without running scripts, reading secrets or sending HTTP.
+
+Add `--json` for the ordered `sequence` of request IDs and stages, the environment
+name, `iterations`, and `totalExecutions`. To save the plan, redirect stdout to a file.
+The `--output` and `--reporter` flags apply to execution reports.
+
 ## Run the same collection from the CLI
 
 ```bash
