@@ -1,20 +1,20 @@
 {
-  "version": "v0.10.4",
+  "version": "v0.11.0",
   "assets": {
     "macos-arm64": {
-      "sha256": "da4150773966abf75de43bff28b1a469f67120a78acabd99cee55c8c29d2cff4"
+      "sha256": "71981331a6d843b0ac1591ee11d57f1682f95daf97b5068c0f448c83e325c08c"
     },
     "macos-x86_64": {
-      "sha256": "4b21181489c394b6557cb1549657b942128fd3dd0f394998452e3a34eb61c61d"
+      "sha256": "efa96a27999f8cb857ed0373fcaed99a45b103dc35682c7338607b09b67d21e4"
     },
     "linux-arm64": {
-      "sha256": "7dbe38dea1a4069c0825e221bb913786f968d3f5111490275912a9b3c318cf1f"
+      "sha256": "b5cfbafd88e10f75b50ff2a093c4c11f3e149bde7d8e8b6cb50d52915df63332"
     },
     "linux-x86_64": {
-      "sha256": "a0a802b2770a3c6a9a87e19b405a8f01605da01ba801dd53c972736bc7d6fd04"
+      "sha256": "0965a1be785ec0e11730e49aad20cd0a852dbc752c61a4e96c019ffc79d869eb"
     },
     "windows-x86_64": {
-      "sha256": "a5e5c9d5b77a315587621f78e948ba95f430b7805035a8957c2acb4d4c4dcbc6"
+      "sha256": "6aea69f099068892c4a72e3d02b1109aa6e8bd8f9b5913a73d4101fd493f70f2"
     }
   }
 }
