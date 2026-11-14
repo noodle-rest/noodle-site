@@ -189,6 +189,13 @@ JSON-literal arguments. Agents can use typed standalone JSON placeholders or
 escaped quoted text, with one substitution pass before pre scripts. See
 [body templates](/docs/guides/using-the-request-pane/#random-and-time-body-values).
 
+Before execution, use `collection run --dry-run --json` to inspect selected
+request IDs, hook stages, the environment name, iteration count, and total
+planned executions. It validates selection and data without reading secrets or
+external scripts or sending HTTP. Redirect stdout to save the plan; report
+flags cannot be combined with `--dry-run`. See
+[CLI previews](/docs/guides/collection-runner/#preview-the-cli-selection).
+
 For repeated inputs, use `collection run --data <file>` with CSV or JSON. Each
 row gets fresh variables and a transient copy of the initial cookie jar;
 `noodle.iteration` exposes the original row to scripts and tests. The

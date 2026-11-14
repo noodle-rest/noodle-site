@@ -479,6 +479,10 @@ url: $base_url/endpoint
 timeout: 0
 ```
 
+Request files cannot use the reserved basenames `settings.yml` or `folder.yml`,
+case-insensitively, in any directory. Collection loading preserves request
+comments and source bytes; explicit saves and formatting rewrite the files.
+
 ## Folder File (`folder.yml`)
 
 Optional. Defines display name, sort order, suite tags, and inheritable

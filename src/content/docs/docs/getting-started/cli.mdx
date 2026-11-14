@@ -214,6 +214,7 @@ in collection order. Folder targets include descendants.
 | `--env/-e <name>` | Collection `settings.yml` environment | Select the environment |
 | `--tag <tag>` | No include filter | Repeatable; every include tag must match |
 | `--exclude-tag <tag>` | No exclude filter | Repeatable; any matching tag excludes |
+| `--dry-run` | `false` | Preview selection, hooks, environment name, and iteration counts without sending requests |
 | `--fail-fast` | `false` | Skip remaining mains and later rows after a failure; attempt the started row's teardown unless cancelled |
 | `--delay <milliseconds>` | `0` | Wait between selected requests, including iteration boundaries; non-negative safe integer |
 | `--data <file.csv\|file.json>` | No data | Validate the file and run selected requests once per row |
@@ -222,6 +223,14 @@ in collection order. Folder targets include descendants.
 | `--json` | `false` | Write a JSON result envelope to stdout and, with `--output`, to a file |
 | `--reporter junit` | No reporter | Write JUnit XML to `--output` and print the human-readable summary |
 | `--output/-o <file>` | No file | Create a new report file with either `--json` or `--reporter junit` |
+
+`--dry-run` validates the selection and dataset without reading environment
+values or external scripts, running scripts, opening cookie jars, or sending
+HTTP. With `--json`, the plan contains `dryRun: true`, `environment` (name or
+`null`), one iteration's ordered `sequence` of `{ id, stage }` entries,
+`iterations`, and `totalExecutions`. Hooks count once per row; scripts can add
+requests and runtime failures can shorten a real run. Redirect stdout to save
+the plan. Combining `--dry-run` with `--output` or `--reporter` exits `2`.
 
 Choose one report format per run. Noodle rejects conflicting flags and existing
 destinations before sending requests. See [collection report files](/docs/guides/automation/#save-a-collection-report)
@@ -262,7 +271,9 @@ The required ID is a collection-relative path without `.yml`, for example
 and empty segments. On Windows, names also reject forbidden filename characters,
 trailing dots/spaces, and reserved device names such as `CON` or `NUL`, including
 with extensions. Keep forward slashes in request IDs. The target collection must
-exist and be initialized.
+exist and be initialized. Request basenames `settings` and `folder` are reserved,
+case-insensitively, in every directory. Creation never overwrites an existing
+request file.
 
 | Option | Default | Behavior |
 | --- | --- | --- |

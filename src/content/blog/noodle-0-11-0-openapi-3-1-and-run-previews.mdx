@@ -1,0 +1,107 @@
+---
+title: "Noodle 0.11.0: OpenAPI 3.1 and Run Previews"
+description: Import FastAPI and other OpenAPI 3.1 documents, then inspect a collection run before sending requests.
+date: 2026-11-14
+author:
+  name: Carlos Montecinos
+  title: Developer
+  url: https://github.com/wilfredinni
+  picture: https://github.com/wilfredinni.png
+tags:
+  - release
+  - automation
+---
+
+An API description gives you a starting collection. A run preview lets you see
+what that collection will send. Noodle 0.11.0 adds OpenAPI 3.1 imports and a
+`--dry-run` option for collection runs, alongside fixes that preserve local
+files and make terminal rendering more reliable.
+
+## Start from an OpenAPI 3.1 document
+
+Save a FastAPI application's `/openapi.json`, or another OpenAPI 3.1 document,
+and import it from JSON or YAML:
+
+```bash
+noodle import ./openapi.json --output ./collections --json
+```
+
+Noodle creates editable requests for supported outgoing path operations,
+groups tagged operations into folders, and maps supported parameters,
+authentication, and request bodies. It resolves local JSON Pointers and uses
+body examples when available. Otherwise, it derives an editable JSON template
+from the schema, including nested objects, arrays, and nullable fields.
+
+A document without `servers` gets a default environment with an empty
+`base_url`. For a document titled Inventory, point the imported collection at
+your local API before sending:
+
+```bash
+noodle environment set base_url http://127.0.0.1:8000 --env default --collection ./collections/inventory
+noodle collection list ./collections/inventory
+```
+
+Review `data.warnings` in the import result. Warnings identify the operation
+and field when references, schema constructs, or security requirements need
+manual attention. External references are unsupported; callbacks and webhooks
+describe incoming traffic and are omitted. A document needs at least one
+supported outgoing path operation. OpenAPI export still writes version 3.0.3.
+The [import guide](/docs/import/import/) covers the supported mappings and limits.
+
+## Inspect the plan before running it
+
+Targets, inherited tags, setup and teardown, and iteration data all affect
+which requests a collection run selects. Preview that selection with the same
+arguments you intend to use for execution:
+
+```bash
+noodle collection run ./api users/ --tag smoke --data ./rows.csv --dry-run --json
+```
+
+The plan contains the environment name, an ordered `sequence` of request IDs
+and stages for one iteration, `iterations`, and `totalExecutions`. With one
+setup request, two selected main requests, and one teardown request, three
+data rows plan twelve top-level executions.
+
+The preview validates the selection and dataset without reading environment
+values or external script files, running scripts, opening cookie jars, or
+sending HTTP. Runtime failures can shorten a real run, and scripts may send
+additional requests. Remove `--dry-run` when you are ready to execute.
+
+To save a plan, redirect stdout. `--output` and `--reporter` remain execution
+report options and cannot be combined with `--dry-run`. Unknown CLI options
+now fail before scripts, HTTP, or report preparation, including a misspelled
+preview flag. See [CLI previews](/docs/guides/collection-runner/#preview-the-cli-selection).
+
+## Keep local files intact
+
+Loading and inspecting a collection now preserve request comments and source
+bytes instead of rewriting files to insert a timeout. Request order follows
+filenames rather than display names. The `settings.yml` and `folder.yml`
+basenames are reserved for metadata, and CLI request creation protects an
+existing file from replacement.
+
+Creating, initializing, or importing a new collection adds `.noodle/` and
+`.timeline/` ignore rules while preserving existing rules. Imports into existing
+collections stage their files before publication and restore originals after
+failures without overwriting concurrent edits. If safe rollback is impossible,
+backups remain available; a cleanup failure after successful publication is
+reported as a warning. Import warnings also appear in a scrollable TUI notification.
+
+Manual-send history and folder activity now count script, capture, assertion,
+and test failures even when the HTTP response succeeds. Collection audits
+compile inline and external scripts and tests without executing them.
+
+## Terminal rendering and installation
+
+This release upgrades OpenTUI to 0.9.0 and refreshes dependencies, with fixes
+for shutdown, JSON response rendering, syntax and variable highlighting, image
+previews under overlays, tab scrolling, and cursor clipping. Homebrew source
+builds use the matching checksummed OpenTUI resource and validate against
+Homebrew's current Zig version. Distribution and update links now use the
+`noodle-rest` organization.
+
+Windows x64 remains beta with the existing documented limits. Follow the
+[installation guide](/docs/getting-started/installation/) and read the
+[full changelog](https://github.com/noodle-rest/noodle/blob/v0.11.0/CHANGELOG.md)
+for the release details.

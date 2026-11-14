@@ -31,7 +31,7 @@ curl -LsSf https://noodlerest.dev/install.sh | NOODLE_INSTALL_DIR=/usr/local/bin
 **Need a specific version?** Pin it with `NOODLE_VERSION`:
 
 ```bash
-curl -LsSf https://noodlerest.dev/install.sh | NOODLE_VERSION=v0.10.4 sh
+curl -LsSf https://noodlerest.dev/install.sh | NOODLE_VERSION=v0.11.0 sh
 ```
 
 ## Windows x64 (beta)
@@ -51,7 +51,7 @@ another directory, or `$env:NOODLE_SKIP_PATH_UPDATE = "1"` to leave PATH alone.
 For example:
 
 ```powershell
-$env:NOODLE_VERSION = "v0.10.4"
+$env:NOODLE_VERSION = "v0.11.0"
 irm https://noodlerest.dev/install.ps1 | iex
 ```
 
@@ -107,7 +107,7 @@ Install an exact CLI release for the next steps in your job:
 ```yaml
 - uses: noodle-rest/setup-noodle@v1
   with:
-    version: v0.10.4
+    version: v0.11.0
 - run: noodle --version
 ```
 

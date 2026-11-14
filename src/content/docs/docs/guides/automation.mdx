@@ -55,6 +55,18 @@ noodle collection run ./api --env staging
 Request IDs cannot be absolute paths or contain traversal, backslashes, hidden
 segments, or empty path segments.
 
+Preview the same selection before execution:
+
+```bash
+noodle collection run ./api smoke/ health users/get --env staging --dry-run --json
+```
+
+The plan shows ordered request IDs and hook stages, the environment name,
+iteration count, and total planned executions. It validates selection and data
+without reading environment values or external scripts, running scripts, or
+sending HTTP. Redirect stdout to save a plan; `--output` and `--reporter` are
+incompatible with `--dry-run`. See [CLI previews](/docs/guides/collection-runner/#preview-the-cli-selection).
+
 ## Build dynamic suites with tags
 
 Requests and non-root folders can declare case-sensitive `tags`. Folder tags
@@ -407,7 +419,7 @@ jobs:
 
       - uses: noodle-rest/setup-noodle@v1
         with:
-          version: v0.10.4
+          version: v0.11.0
 
       - name: Validate collection
         run: noodle collection audit ./my-api
