@@ -152,7 +152,15 @@ See the [import guide](/docs/import/import/), [export guide](/docs/import/export
 
 ## Install or upgrade
 
-Noodle is available for macOS and Linux, with Windows x64 builds in beta. Use Homebrew or the standalone installer to get started. [Installation guide](/docs/getting-started/installation/) · [Quick start](/docs/getting-started/quick-start/)
+Install Noodle from Homebrew core on macOS or Linux.
+
+```bash
+brew install noodle
+```
+
+Homebrew updates the formula on its own schedule. If it still shows an earlier version, you can download the 1.0.0 binary directly. [Homebrew formula](https://formulae.brew.sh/formula/noodle) · [GitHub release](https://github.com/noodle-rest/noodle/releases/tag/v1.0.0)
+
+The installation guide also covers standalone installs and Windows x64 beta. [Installation guide](/docs/getting-started/installation/) · [Quick start](/docs/getting-started/quick-start/)
 
 If you already use Noodle, run `noodle update` for a standalone install or `brew upgrade noodle` once the Homebrew formula carries 1.0. After a Homebrew upgrade, run `noodle agent install` if you use the managed skill. Check the installed version with `noodle --version`. [Updating Noodle](/docs/getting-started/installation/#updating)
 
