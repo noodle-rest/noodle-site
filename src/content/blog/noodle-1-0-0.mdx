@@ -25,7 +25,7 @@ A collection can live in the repository with the API it exercises. A teammate ca
 
 - **Collections and folders.** Organize requests as readable YAML, share headers and authentication through folders, and switch between registered collections from the terminal.
 - **Request editing.** Edit the method, URL, path and query parameters, headers, JSON and XML bodies, URL-encoded and multipart forms, and file uploads. The editors offer syntax highlighting, folding, variable completion, and formatting where supported. Open the request YAML directly when you want to edit the file.
-- **Terminal navigation.** Find requests with fuzzy search, use the command palette to discover actions, and arrange the panes side by side or stacked. Pick a theme, follow your terminal palette, or customize your shortcuts.
+- **Terminal navigation.** Use the keyboard or mouse to move between panes and tabs. Find requests with fuzzy search, use the command palette, and arrange the panes side by side or stacked. Pick a theme, follow your terminal palette, or customize your shortcuts.
 
 See the [collections guide](/docs/guides/collections/), [request editor](/docs/guides/using-the-request-pane/), and [keybinding reference](/docs/reference/keybindings/).
 
@@ -88,10 +88,10 @@ Run `noodle ./api`, select **Check response**, and press **Ctrl+Return**. Open t
 
 The collection runner was the goal I set for 1.0. The requests, checks, and scripts you use in the terminal can now run together from the same collection. [The early roadmap](/blog/what-changed-since-noodle-launched/#what-is-next-on-the-road-to-v1)
 
-- **Select what runs.** Run the whole collection, select requests or folders, or use tags to pick a smoke suite. Preview the order with `--dry-run` without sending HTTP.
+- **Select what runs.** Run the whole collection, select requests or folders, or include and exclude requests by tag. Preview the order with `--dry-run` without sending HTTP.
 - **Repeat the workflow.** Run once per CSV or JSON row, with optional setup and teardown requests around each row. Set a delay between requests or stop after the first failure with fail-fast.
 - **Follow results as they come in.** In the TUI Runner, read completed Results and Console while later requests run. Leave the view and return to it during the app session. Stop a run in the TUI or CLI and keep the results that already finished.
-- **Run unattended.** The CLI can create, inspect, audit, and run collections and individual requests. Use exit statuses in CI, structured JSON in scripts, and JSON or JUnit XML report files for collection runs.
+- **Run unattended.** The CLI can create, inspect, audit, and format collections, then run a single request or a suite. Failed checks exit nonzero. Use structured JSON in scripts and save JSON or JUnit XML reports for collection runs.
 
 ![Noodle's collection Runner showing request and folder selection alongside run settings](../../assets/runner-workspace.png)
 
