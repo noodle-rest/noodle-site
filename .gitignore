@@ -24,3 +24,5 @@ pnpm-debug.log*
 /.codex/
 /DESIGN.md
 /PRODUCT.md
+graphify-out/
+.claude/settings.local.json
